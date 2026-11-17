@@ -1,6 +1,6 @@
-# 🤖 Asistente FAQ con Inteligencia Artificial
+# ✨ Luz - Asistente con Inteligencia Artificial
 
-Aplicación web interactiva desarrollada como proyecto académico para la cátedra de **Inteligencia Artificial**. Construida con tecnologías web estándar (**HTML5**, **CSS3** y **JavaScript Vanilla**), conectada directamente a los modelos generativos de **Google Gemini** mediante la **Fetch API** nativa del navegador.
+Aplicación web interactiva desarrollada por **David Beltrán** como proyecto académico para la cátedra de **Inteligencia Artificial**. Construida con tecnologías web estándar (**HTML5**, **CSS3** y **JavaScript Vanilla**), conectada directamente a los modelos generativos de **Google Gemini** mediante la **Fetch API** nativa del navegador.
 
 ---
 
