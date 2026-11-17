@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luz - Asistente de IA | David Beltrán</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <!-- Markdown parser y resaltado de sintaxis para respuestas enriquecidas -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="app-container">
     <!-- Encabezado Principal -->
     <header class="chat-header">
       <div class="header-branding">
         <div class="logo-badge">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
           </svg>
         </div>
         <div>
@@ -46,7 +51,8 @@
     <div id="apiModal" class="modal-backdrop hidden">
       <div class="modal-card">
         <h3>Configuración de Gemini API Key</h3>
-        <p>Puedes configurar tu clave en el archivo <code>config.js</code> o ingresarla aquí. Se guardará de forma segura en tu navegador (LocalStorage):</p>
+        <p>Puedes configurar tu clave en el archivo <code>config.js</code> o ingresarla aquí. Se guardará de forma
+          segura en tu navegador (LocalStorage):</p>
         <div class="input-group">
           <input type="password" id="apiKeyInput" placeholder="AIzaSy..." spellcheck="false">
           <button id="toggleKeyVisibility" class="btn-subtle" type="button">👁️</button>
@@ -66,13 +72,21 @@
         <div class="message-content">
           <div class="message-sender">Luz</div>
           <div class="message-body">
-            <p>¡Hola! Soy <strong>Luz</strong>, un asistente de Inteligencia Artificial desarrollado por <strong>David Beltrán</strong> para resolver tus dudas sobre Inteligencia Artificial, programación y ciencias de la computación.</p>
+            <p>¡Hola! Soy <strong>Luz</strong>, un asistente de Inteligencia Artificial desarrollado por <strong>David
+                Beltrán</strong> para resolver tus dudas sobre Inteligencia Artificial, programación y ciencias de la
+              computación.</p>
             <p>¿En qué puedo ayudarte hoy? Puedes escribir una pregunta o probar una de las siguientes sugerencias:</p>
             <div class="quick-prompts">
-              <button class="chip" data-prompt="¿Qué es el Machine Learning y en qué se diferencia del Deep Learning?">🤖 Machine Learning vs Deep Learning</button>
-              <button class="chip" data-prompt="¿Cómo funciona el mecanismo de atención en un Transformer?">🧠 Arquitectura Transformer</button>
-              <button class="chip" data-prompt="Explica el Test de Turing y su relevancia actual de forma concisa.">🎯 Test de Turing</button>
-              <button class="chip" data-prompt="Dame 3 ejemplos prácticos de aplicaciones de IA en la vida cotidiana.">💡 IA en la vida real</button>
+              <button class="chip"
+                data-prompt="¿Qué es el Machine Learning y en qué se diferencia del Deep Learning?">🤖 Machine Learning
+                vs Deep Learning</button>
+              <button class="chip" data-prompt="¿Cómo funciona el mecanismo de atención en un Transformer?">🧠
+                Arquitectura Transformer</button>
+              <button class="chip" data-prompt="Explica el Test de Turing y su relevancia actual de forma concisa.">🎯
+                Test de Turing</button>
+              <button class="chip"
+                data-prompt="Dame 3 ejemplos prácticos de aplicaciones de IA en la vida cotidiana.">💡 IA en la vida
+                real</button>
             </div>
           </div>
           <span class="message-time" id="welcomeTime">Ahora</span>
@@ -98,14 +112,13 @@
     <footer class="chat-footer">
       <form id="chatForm" class="input-form">
         <div class="input-wrapper">
-          <textarea 
-            id="userInput" 
-            placeholder="Escribe tu pregunta aquí... (Presiona Enter para enviar, Shift+Enter para salto de línea)" 
-            rows="1" 
-            required></textarea>
+          <textarea id="userInput"
+            placeholder="Escribe tu pregunta aquí... (Presiona Enter para enviar, Shift+Enter para salto de línea)"
+            rows="1" required></textarea>
         </div>
         <button type="submit" id="sendBtn" class="btn-send" title="Enviar consulta">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"></line>
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
           </svg>
@@ -117,9 +130,15 @@
           Modelo: <code id="activeModelBadge">gemini-1.5-flash</code> • Conexión directa mediante Fetch API
         </div>
         <div class="footer-author">
-          Desarrollado por <a href="https://github.com/realshirodev" target="_blank" rel="noopener noreferrer" class="footer-link">David Beltrán (realshirodev)</a> • 
-          <a href="https://github.com/realshirodev/iaevaluacion1" target="_blank" rel="noopener noreferrer" class="footer-link">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -1px; margin-right: 3px;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>Repositorio en GitHub
+          Desarrollado por <a href="https://github.com/realshirodev" target="_blank" rel="noopener noreferrer"
+            class="footer-link">David Beltrán (realshirodev)</a> •
+          <a href="https://github.com/realshirodev/iaevaluacion1" target="_blank" rel="noopener noreferrer"
+            class="footer-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align: -1px; margin-right: 3px;">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>Repositorio en GitHub
           </a>
         </div>
       </div>
@@ -130,5 +149,5 @@
   <script src="config.js" onerror="/* config.js opcional */"></script>
   <script src="app.js"></script>
 </body>
-</html>
 
+</html>
