@@ -2,6 +2,7 @@
 .env
 .env.local
 .env.*.local
+config.js
 
 # Dependencias y logs
 node_modules/

@@ -384,11 +384,15 @@ async function loadEnvApiKey() {
 }
 
 function getActiveApiKey() {
-  // 1. Clave leída del archivo .env
+  // 1. Clave desde CONFIG (cargada desde config.js local, ignorado en git)
+  if (typeof CONFIG !== "undefined" && CONFIG && CONFIG.GEMINI_API_KEY && !CONFIG.GEMINI_API_KEY.includes("tu_api_key")) {
+    return CONFIG.GEMINI_API_KEY.trim();
+  }
+  // 2. Clave leída del archivo .env (cuando se sirve mediante servidor web)
   if (envApiKey && envApiKey.trim() !== "" && !envApiKey.includes("tu_api_key")) {
     return envApiKey.trim();
   }
-  // 2. Clave guardada en LocalStorage
+  // 3. Clave guardada en LocalStorage (desde el modal de la interfaz)
   const storedKey = localStorage.getItem("gemini_api_key");
   if (storedKey && storedKey.trim() !== "") {
     return storedKey.trim();
